@@ -15,7 +15,7 @@ let ItemSchema = new Schema(
       type: String,
       required: true,
     },
-    image: {
+    flavor: {
       type: String,
       required: true,
     },

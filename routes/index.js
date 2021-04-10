@@ -5,5 +5,4 @@ const { authorize } = require("../middleware/index");
 
 router.get("/user", authorize, user);
 router.patch("/user/update-account", authorize, updateUser);
-
 module.exports = router;

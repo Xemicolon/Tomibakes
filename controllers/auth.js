@@ -315,7 +315,7 @@ exports.logout = async (req, res) => {
 
   const user = decodeJWT(accessToken);
 
-  if (accessToken && refreshToken) {
+  if (accessToken && (accessToken || refreshToken)) {
     redisClient.del(JSON.stringify(user.userID), (err, result) => {
       return result;
     });

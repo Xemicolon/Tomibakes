@@ -4,8 +4,8 @@ const User = require("../models/User");
 const { decodeJWT } = require("../utils");
 
 exports.addToCart = async (req, res, next) => {
-  const { productId, quantity } = req.body;
-  if (!productId || !quantity) {
+  const { productId, quantity, flavor } = req.body;
+  if (!productId) {
     return res.status(400).json({
       success: false,
       message: "All fields are required!",
@@ -15,7 +15,7 @@ exports.addToCart = async (req, res, next) => {
   if (!req.headers["x-access-token"]) {
     return res.status(401).json({
       success: false,
-      message: "Unauthorized request. Please login to continue",
+      message: "You need to be logged in to add products to cart!",
     });
   }
 
@@ -43,7 +43,8 @@ exports.addToCart = async (req, res, next) => {
     if (!cart) {
       const item = {
         name: product.name,
-        image: product.image[0].url,
+        image: product.image[0].imgurl,
+        flavor: product.flavor,
         productId: product._id,
         quantity: quantity,
         price: product.price,
@@ -80,7 +81,8 @@ exports.addToCart = async (req, res, next) => {
       cart.items.push({
         name: product.name,
         cartId: cart._id,
-        image: product.image[0].url,
+        flavor: product.flavor,
+        image: product.image[0].imgurl,
         productId: product._id,
         quantity: quantity,
         price: product.price,

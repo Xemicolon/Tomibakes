@@ -2,17 +2,10 @@ const Product = require("../models/Product");
 const { deleteImage } = require("../utils/fileUpload");
 
 exports.addProduct = async (req, res) => {
-  const {
-    name,
-    description,
-    category,
-    price,
-    image,
-    inStock,
-    brand,
-  } = req.body;
+  const { name, image, description, size, flavor, frosting, price } = req.body;
+  console.log(req.body);
 
-  if (!name || !description || !category || !price) {
+  if (!name || !description || !size || !price || !frosting || !flavor) {
     return res.status(400).json({
       success: false,
       message: "One or more fields are missing!",
@@ -29,16 +22,14 @@ exports.addProduct = async (req, res) => {
   const productInfo = {
     name,
     description,
-    category,
+    size,
+    flavor,
+    frosting,
     price,
-    inStock,
-    brand,
   };
 
   let newProduct = new Product(productInfo);
   newProduct.image = image;
-
-  newProduct.category = category;
 
   newProduct.save();
 
@@ -50,34 +41,25 @@ exports.addProduct = async (req, res) => {
 };
 
 exports.updateProduct = async (req, res) => {
-  const {
-    name,
-    description,
-    category,
-    price,
-    image,
-    inStock,
-    brand,
-  } = req.body;
+  const { name, description, frosting, price, image, flavor, size } = req.body;
   try {
     const product = await Product.findById(req.params.productId);
     product.name = name;
     product.description = description;
-    product.category = category;
-    if (image) {
-      product.image = image;
-    }
+    product.frosting = frosting;
+    product.image = image;
     product.price = price;
-    product.inStock = inStock;
-    product.brand = brand;
+    product.flavor = flavor;
+    product.size = size;
 
-    product.save();
+    await product.save();
 
     res.status(200).json({
       success: true,
       message: "Updated product successfully",
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json({
       success: false,
       message: "Error updating product",

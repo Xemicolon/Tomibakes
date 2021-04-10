@@ -11,7 +11,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "ecommerce",
+    folder: "tomisin",
     allowedFormats: ["jpg", "png", "jpeg"],
     transformation: [
       {

@@ -1,14 +1,17 @@
 const mongoose = require("mongoose");
 
 exports.db = async () => {
-  const db_connect = await mongoose.connect(process.env.DB_URI, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-    user: process.env.mongoUser,
-    pass: process.env.mongoPass,
-  });
+  const db_connect = await mongoose.connect(
+    process.env.NODE === "production" ? process.env.DB_URI : process.env.DB_URL,
+    {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+      useUnifiedTopology: true,
+      user: process.env.NODE === "production" ? process.env.mongoUser : "",
+      pass: process.env.NODE === "production" ? process.env.mongoPass : "",
+    }
+  );
 
   console.log(
     `Database Connected\nDatabase Url: ${db_connect.connection.host}`
