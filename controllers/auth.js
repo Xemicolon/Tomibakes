@@ -142,6 +142,7 @@ exports.login = async (req, res) => {
       refresh: refresh_token,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json({
       error: err.message,
     });
