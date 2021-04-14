@@ -24,7 +24,7 @@ const server = http.createServer(app);
 app.use(
   cors({
     origin:
-      '*',
+      process.env.NODE_ENV === 'production' ? process.env.CORS_PROD : process.env.CORS_LOCAL,
     credentials: true,
   })
 );
