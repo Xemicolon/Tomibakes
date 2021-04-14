@@ -6,7 +6,7 @@ let redisClient = redis.createClient({
     process.env.NODE === "production"
       ? process.env.REDIS_URL
       : "redis://127.0.0.1:6379",
-  host: "127.0.0.1",
+  // host: "127.0.0.1",
   no_ready_check: true,
   auth_pass:
     process.env.NODE === "production" ? process.env.REDIS_AUTH_PASS : "",
