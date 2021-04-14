@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 exports.db = async () => {
   const db_connect = await mongoose.connect(
-    process.env.NODE === "production" ? process.env.DB_URI : process.env.DB_URL,
+    process.env.NODE_ENV === "production" ? process.env.DB_URI : process.env.DB_URL,
     {
       useNewUrlParser: true,
       useCreateIndex: true,
