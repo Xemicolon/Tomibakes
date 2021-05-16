@@ -9,7 +9,7 @@
             type="checkbox"
             value="cake"
             class=""
-            @click="saveOrder"
+            @click="additem"
           />
           Cake
         </label>
@@ -22,9 +22,9 @@
             type="checkbox"
             value="cupcake"
             class=""
-            @click="saveOrder"
+            @click="additem"
           />
-          parfaitake
+          Cupcake
         </label>
       </div>
 
@@ -35,7 +35,7 @@
             type="checkbox"
             value="parfait"
             class=""
-            @click="saveOrder"
+            @click="additem"
           />
           Parfait
         </label>
@@ -48,7 +48,7 @@
             type="checkbox"
             value="brownies"
             class=""
-            @click="saveOrder"
+            @click="additem"
           />
           Brownies
         </label>
@@ -61,11 +61,26 @@
             type="checkbox"
             value="chinchin"
             class=""
-            @click="saveOrder"
+            @click="additem"
           />
           Chinchin
         </label>
       </div>
+      <button
+        v-if="this.$store.state.cart.items.length !== 0"
+        class="
+          p-3
+          bg-purple-700
+          hover:bg-purple-800
+          w-full
+          rounded-sm
+          text-white
+          focus:outline-none
+        "
+        type="button"
+      >
+        Next
+      </button>
     </form>
   </div>
 </template>
@@ -73,17 +88,20 @@
 <script>
 export default {
   data() {
-    return {
-      orders: [],
-      removed: [],
-    }
+    return {}
   },
   methods: {
-    saveOrder(e) {
-      // if item is checked, add to orders array
+    additem(e) {
       if (e.target.checked) {
-        // this.orders.filter()
+        return this.$store.dispatch('cart/addItem', e.target.value)
       }
+
+      if (!e.target.checked) {
+        return this.$store.dispatch('cart/removeItem', e.target.value)
+      }
+    },
+    saveorder() {
+      return this.$store.dispatch('cart/saveorder')
     },
   },
 }
