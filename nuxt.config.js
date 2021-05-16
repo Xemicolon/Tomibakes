@@ -34,6 +34,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -49,15 +50,18 @@ export default {
 
   googleFonts: {
     display: 'swap', // 'auto' | 'block' | 'swap' | 'fallback' | 'optional'
-    // families: {
-    //   Roboto: true,
-    //   'Josefin+Sans': true,
-    //   Lato: [100, 300],
-    //   Raleway: {
-    //     wght: [100, 400],
-    //     ital: [100],
-    //   },
-    // },
+    families: {
+      // Roboto: true,
+      Nunito: {
+        wght: [500, 600, 700, 800],
+      },
+      // 'Josefin+Sans': true,
+      // Lato: [100, 300],
+      // Raleway: {
+      //   wght: [100, 400],
+      //   ital: [100],
+      // },
+    },
   },
 
   tailwindcss: {
