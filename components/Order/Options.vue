@@ -1,38 +1,32 @@
 <template>
   <div class="options px-3">
-    <div class="mt-4">
+    <div class="pb-8 pt-4">
       <nuxt-link
         to="/order"
-        class="text-purple-600 hover:text-purple-800 text-sm"
+        class="text-purple-600 hover:text-purple-800 text-md font-bold"
         >Go back to orders</nuxt-link
       >
-    </div>
-
-    <div class="my-8">
-      <h1 class="text-2xl font-bold">Options available for selected Items</h1>
-      <span>({{ getorders.toString() }})</span>
     </div>
 
     <div v-if="cake">
       <Cake />
     </div>
 
-    <div v-if="cupcake">
+    <div v-if="cupcake" class="pt-6">
       <Cupcake />
     </div>
 
-    <div v-if="parfait">
+    <div v-if="parfait" class="pt-6">
       <Parfait />
     </div>
 
-    <div v-if="chinchin">
+    <div v-if="chinchin" class="pt-6">
       <Chinchin />
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import Cake from '~/components/Items/Cake'
 import Cupcake from '~/components/Items/Cupcake'
 import Parfait from '~/components/Items/Parfait'
@@ -53,11 +47,7 @@ export default {
       chinchin: false,
     }
   },
-  computed: {
-    ...mapGetters({
-      getorders: 'cart/getOrders',
-    }),
-  },
+
   mounted() {
     const orders = JSON.parse(localStorage.getItem('orders'))
     this.$store.dispatch('cart/addItems', orders)

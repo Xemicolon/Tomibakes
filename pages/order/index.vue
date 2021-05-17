@@ -1,5 +1,5 @@
 <template>
-  <div class="order-page">
+  <div class="order-page sm:w-7/12 md:w-6/12 mx-auto bg-white h-screen pt-12">
     <Order />
   </div>
 </template>

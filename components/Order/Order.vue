@@ -1,6 +1,6 @@
 <template>
   <div class="order px-4 w-full">
-    <h1 class="mt-4 font-bold text-2xl">What do you want to order?</h1>
+    <h1 class="pt-4 font-bold text-2xl">What do you want to order?</h1>
     <form action="" class="mt-6">
       <div class="border rounded flex items-center mb-5">
         <label for="cake" class="p-3 w-full cursor-pointer">
@@ -59,7 +59,7 @@
         class="
           bg-teal-700
           h-12
-          hover:bg-purple-800
+          hover:bg-teal-800
           w-full
           rounded
           grid
@@ -108,11 +108,11 @@ export default {
   methods: {
     additem(e) {
       if (e.target.checked) {
-        return this.$store.dispatch('cart/addItem', e.target.value)
+        return this.$store.dispatch('cart/addItem', { name: e.target.value })
       }
 
       if (!e.target.checked) {
-        return this.$store.dispatch('cart/removeItem', e.target.value)
+        return this.$store.dispatch('cart/removeItem', { name: e.target.value })
       }
     },
     saveorder() {

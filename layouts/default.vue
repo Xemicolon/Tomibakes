@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Header />
+  <div class="bg-gray-300">
+    <Header class="sm:w-7/12 md:w-6/12 mx-auto" />
     <Nuxt />
   </div>
 </template>

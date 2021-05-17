@@ -3,12 +3,13 @@
     <div class="flex flex-row justify-between items-center">
       <nuxt-link to="/" class="font-semibold">Logo</nuxt-link>
       <div class="flex flex-row">
-        <div>
+        <div @click="show = !show">
           <p
             v-if="cartCount || count > 0"
             class="
               w-6
               h-6
+              cartcount
               flex
               items-center
               justify-center
@@ -17,8 +18,9 @@
               font-bold
               text-gray-200
               bg-teal-600
+              absolute
+              ml-4
             "
-            style="position: absolute; right: 15px"
           >
             {{ cartCount || count }}
           </p>
@@ -40,6 +42,23 @@
         </div>
       </div>
     </div>
+    <div
+      v-if="show"
+      style="right: 10px; top: 50px; height: 95px"
+      class="
+        rounded-md
+        border
+        p-3
+        absolute
+        bg-white
+        grid
+        place-content-center
+        shadow-sm
+        w-8/12
+      "
+    >
+      <p>Items: [ {{ getorders.toString() }} ]</p>
+    </div>
   </div>
 </template>
 
@@ -50,11 +69,13 @@ export default {
   data() {
     return {
       count: 0,
+      show: false,
     }
   },
   computed: {
     ...mapGetters({
       cartCount: 'cart/getCartCount',
+      getorders: 'cart/getOrders',
     }),
   },
 
@@ -65,3 +86,5 @@ export default {
   },
 }
 </script>
+
+<style scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <div class="cake-options">
-    <p class="">CAKE OPTIONS</p>
+    <p class="">✔ the options you want for your cake</p>
 
     <div class="p-4 border rounded-md mb-6">
       <p class="font-bold mb-3">Flavor</p>
@@ -23,26 +23,26 @@
     </div>
 
     <div class="p-4 border rounded-md mb-6">
-      <p class="font-bold mb-3">Sizes</p>
+      <p class="font-bold mb-3">Size</p>
       <div class="grid grid-cols-4">
         <label for="6inches" class="text-sm">
           <input id="6inches" type="checkbox" value="6inches" />
-          6in
+          Small
         </label>
 
         <label for="8inches" class="text-sm">
           <input id="8inches" type="checkbox" value="8inches" />
-          8in
+          Medium
         </label>
 
         <label for="10inches" class="text-sm">
           <input id="10inches" type="checkbox" value="10inches" />
-          10in
+          Big
         </label>
 
         <label for="12inches" class="text-sm">
           <input id="12inches" type="checkbox" value="12inches" />
-          12in
+          Large
         </label>
       </div>
     </div>
@@ -53,21 +53,6 @@
         <label for="buttercream" class="text-sm">
           <input id="buttercream" type="checkbox" value="buttercream" />
           Buttercream
-        </label>
-      </div>
-    </div>
-
-    <div class="p-4 border rounded-md mb-6">
-      <p class="font-bold mb-3">Toppings</p>
-      <div class="grid grid-flow-col-dense">
-        <label for="yes" class="text-sm">
-          <input id="yes" type="checkbox" value="yes" />
-          Yes
-        </label>
-
-        <label for="no" class="text-sm">
-          <input id="no" type="checkbox" value="no" />
-          No
         </label>
       </div>
     </div>
