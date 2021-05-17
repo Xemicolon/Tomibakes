@@ -3,8 +3,9 @@
     <div class="flex flex-row justify-between items-center">
       <p class="font-semibold">Logo</p>
       <div class="flex flex-row">
-        <div v-if="cartCount > 0">
+        <div>
           <p
+            v-if="cartCount || count > 0"
             class="
               w-6
               h-6
@@ -15,11 +16,11 @@
               text-xs
               font-bold
               text-gray-200
-              bg-purple-600
+              bg-teal-600
             "
             style="position: absolute; right: 15px"
           >
-            {{ cartCount }}
+            {{ cartCount || count }}
           </p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -46,10 +47,25 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  data() {
+    return {
+      count: 0,
+    }
+  },
   computed: {
     ...mapGetters({
       cartCount: 'cart/getCartCount',
     }),
+  },
+
+  mounted() {
+    const orders = JSON.parse(localStorage.getItem('orders'))
+
+    if (!orders) {
+      return
+    }
+
+    this.count = orders.length
   },
 }
 </script>

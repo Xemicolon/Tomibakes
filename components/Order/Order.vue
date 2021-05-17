@@ -9,7 +9,7 @@
             type="checkbox"
             value="cake"
             class=""
-            @click="additem"
+            @click="additem($event)"
           />
           Cake
         </label>
@@ -22,7 +22,7 @@
             type="checkbox"
             value="cupcake"
             class=""
-            @click="additem"
+            @click="additem($event)"
           />
           Cupcake
         </label>
@@ -35,7 +35,7 @@
             type="checkbox"
             value="parfait"
             class=""
-            @click="additem"
+            @click="additem($event)"
           />
           Parfait
         </label>
@@ -48,7 +48,7 @@
             type="checkbox"
             value="brownies"
             class=""
-            @click="additem"
+            @click="additem($event)"
           />
           Brownies
         </label>
@@ -61,7 +61,7 @@
             type="checkbox"
             value="chinchin"
             class=""
-            @click="additem"
+            @click="additem($event)"
           />
           Chinchin
         </label>
@@ -70,12 +70,13 @@
         v-if="this.$store.state.cart.items.length !== 0"
         to="/order/options"
         class="
-          p-3
+          bg-teal-700
           h-12
-          bg-purple-700
           hover:bg-purple-800
           w-full
-          rounded-sm
+          rounded
+          grid
+          items-center
           text-white
           focus:outline-none
           text-center
@@ -91,7 +92,31 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      orders: [],
+      isChecked: false,
+    }
+  },
+  mounted() {
+    const orders = JSON.parse(localStorage.getItem('orders'))
+    const inputs = document.querySelectorAll('input')
+
+    if (!orders) {
+      return
+    }
+
+    for (let i = 0; i < inputs.length; i++) {
+      for (let j = 0; j < orders.length; j++) {
+        if (inputs[i].value === orders[j].name) {
+          inputs[i].checked = true
+        }
+      }
+
+      this.$store.dispatch('cart/addItems', orders)
+      // if (inputs[i] === orders.name[i]) {
+      //   inputs[i].checked = true
+      // }
+    }
   },
   methods: {
     additem(e) {
