@@ -59,13 +59,9 @@ export default {
   },
 
   mounted() {
-    const orders = JSON.parse(localStorage.getItem('orders'))
+    // const orders = JSON.parse(localStorage.getItem('orders'))
 
-    if (!orders) {
-      return
-    }
-
-    this.count = orders.length
+    this.count = this.cartCount
   },
 }
 </script>
