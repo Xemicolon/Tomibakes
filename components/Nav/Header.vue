@@ -1,12 +1,32 @@
 <template>
-  <div class="header bg-white p-3 border-b">
+  <div class="header bg-white py-3 px-6 border-b">
     <div class="flex justify-between items-center">
       <p class="font-semibold">Logo</p>
-      <p>
+      <div class="flex">
+        <div
+          v-if="cartCount > 0"
+          class="
+            w-6
+            h-6
+            flex
+            items-center
+            justify-center
+            rounded-full
+            text-xs
+            font-bold
+            text-gray-200
+            bg-purple-600
+          "
+          style="position: relative; left: 40px"
+        >
+          <p class="flex items-center">
+            {{ cartCount }}
+          </p>
+        </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           enable-background="new 0 0 24 24"
-          height="24px"
+          class="w-8"
           viewBox="0 0 24 24"
           width="24px"
           fill="#000000"
@@ -18,7 +38,19 @@
             />
           </g>
         </svg>
-      </p>
+      </div>
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+  computed: {
+    ...mapGetters({
+      cartCount: 'cart/getCartCount',
+    }),
+  },
+}
+</script>

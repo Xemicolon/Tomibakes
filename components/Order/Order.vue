@@ -66,8 +66,9 @@
           Chinchin
         </label>
       </div>
-      <button
+      <nuxt-link
         v-if="this.$store.state.cart.items.length !== 0"
+        to="/order/options"
         class="
           p-3
           bg-purple-700
@@ -76,11 +77,12 @@
           rounded-sm
           text-white
           focus:outline-none
+          text-center
         "
         type="button"
       >
         Next
-      </button>
+      </nuxt-link>
     </form>
   </div>
 </template>
