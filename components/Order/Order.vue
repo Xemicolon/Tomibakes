@@ -71,6 +71,7 @@
         to="/order/options"
         class="
           p-3
+          h-12
           bg-purple-700
           hover:bg-purple-800
           w-full
