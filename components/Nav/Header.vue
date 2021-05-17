@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white py-3 px-6 border-b">
     <div class="flex flex-row justify-between items-center">
-      <p class="font-semibold">Logo</p>
+      <nuxt-link to="/" class="font-semibold">Logo</nuxt-link>
       <div class="flex flex-row">
         <div>
           <p

@@ -37,20 +37,7 @@
             class=""
             @click="additem($event)"
           />
-          Parfait
-        </label>
-      </div>
-
-      <div class="border rounded flex items-center mb-5">
-        <label for="brownies" class="p-3 w-full cursor-pointer">
-          <input
-            id="brownies"
-            type="checkbox"
-            value="brownies"
-            class=""
-            @click="additem($event)"
-          />
-          Brownies
+          Cake Parfait
         </label>
       </div>
 
