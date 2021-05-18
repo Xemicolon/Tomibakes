@@ -108,7 +108,10 @@ export default {
   methods: {
     additem(e) {
       if (e.target.checked) {
-        return this.$store.dispatch('cart/addItem', { name: e.target.value })
+        return this.$store.dispatch('cart/addItem', {
+          name: e.target.value,
+          type: [],
+        })
       }
 
       if (!e.target.checked) {

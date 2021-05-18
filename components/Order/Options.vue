@@ -50,6 +50,11 @@ export default {
 
   mounted() {
     const orders = JSON.parse(localStorage.getItem('orders'))
+
+    if (!orders) {
+      return this.$router.push('/order')
+    }
+
     this.$store.dispatch('cart/addItems', orders)
     for (let i = 0; i < orders.length; i++) {
       if (orders[i].name === 'cake') {

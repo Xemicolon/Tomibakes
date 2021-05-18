@@ -1,6 +1,6 @@
 export default {
   getCartCount(state) {
-    return state.items.length
+    return state.items !== null ? state.items.length : 0
   },
   getOrders(state) {
     return state.items.map((item) => item.name)

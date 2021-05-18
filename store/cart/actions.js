@@ -13,4 +13,8 @@ export default {
   addItems({ commit }, items) {
     commit('ADD_ITEMS', items)
   },
+  updateItems({ commit }, items) {
+    commit('UPDATE_ITEMS', items)
+    commit('SAVE_ORDER')
+  },
 }
